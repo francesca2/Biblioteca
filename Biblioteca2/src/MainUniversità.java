@@ -42,9 +42,9 @@ public class MainUniversità {
 			System.out.println("Impossibile registrare lo studente " + s2.getNome() + " " + s2.getCognome() + "al corso!");
 		}
 		
-		u.getG().registraLibro(u.getBiblioteca(), "G. Martin", "Il trono di spade", 2);
+		u.getG().registraLibro(u.getBiblioteca(), "G. Martin", "Il trono di spade", "GM987" ,2);
 		
-		u.getG().prestaLibro(u.getBiblioteca(), "G. Martin", "Il trono di spade", "Mario", "Rossi");
+		u.getG().prestaLibro(u.getBiblioteca(), "GM987", "Mario", "Rossi");
 	
 		System.out.println(u.toStringStudenti());
 //		System.out.println(u.getBiblioteca().toStringUtenti());
