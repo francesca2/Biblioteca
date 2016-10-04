@@ -61,6 +61,9 @@ public class Gestione {
 	
 			if(b.getMappaLibri().containsKey(l.getSerialNumber()) && l.getCopieDisponibili()>0)
 			{
+				//L'idea è che essendo la lista ordinata, mi basta controllare il prestito più vecchio, 
+				//ovvero il primo che incontro quando faccio cercaPrestito. Se anche quello più recente
+				//fosse scaduto tanto non potrei comunque imprestare il libro.
 					if(b.getMappaUtente().containsKey(u.getCodiceFiscale()) && u.getLibriUtente().size()<3 && (dataOggi.getTime()-p.getDate().getTime())<=tempoLimite)
 					{
 						u.aggiungiLibroUtente(l);
