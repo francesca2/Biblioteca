@@ -110,9 +110,9 @@ public class Gestione {
 		Libro l=b.getMappaLibri().get(serialNumber);
 		Utente u=b.getMappaUtente().get(codiceFiscale);
 
-			if(b.getListaLibri().contains(l))
+			if(b.getMappaLibri().containsKey(serialNumber))
 			{
-					if(b.getListaUtenti().contains(u) && u.getListaLibriUtente().contains(l))
+					if(b.getMappaUtente().containsKey(codiceFiscale) && u.getLibriUtente().containsKey(serialNumber))
 					{
 						u.restituisciLibro(l);
 //						b.aggiungiLibro(b.trovaLibro(autore,titolo));
