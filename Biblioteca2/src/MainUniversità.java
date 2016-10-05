@@ -1,3 +1,5 @@
+import java.util.Date;
+
 import Università.*;
 
 public class MainUniversità {
@@ -44,7 +46,9 @@ public class MainUniversità {
 		
 		u.getG().registraLibro(u.getBiblioteca(), "G. Martin", "Il trono di spade", "GM987" ,2);
 		
-		u.getG().prestaLibro(u.getBiblioteca(), "GM987", "Mario", "Rossi");
+		Date data1=new Date();
+		
+		u.getG().prestaLibro(u.getBiblioteca(), "GM987", "MarioRossi",data1);
 	
 		System.out.println(u.toStringStudenti());
 //		System.out.println(u.getBiblioteca().toStringUtenti());

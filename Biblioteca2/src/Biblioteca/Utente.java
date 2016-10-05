@@ -10,7 +10,7 @@ public class Utente implements ValidaDati {
 	protected String nome;
 	protected String cognome;
 	protected String codiceFiscale;
-	private List<Libro> listaLibriUtente =new ArrayList<Libro>();
+//	private List<Libro> listaLibriUtente =new ArrayList<Libro>();
 	private Map<String,Libro> libriUtente = new TreeMap<String,Libro>();
 	private int numeroLibriInPrestito;
 	
@@ -41,13 +41,13 @@ public class Utente implements ValidaDati {
 		this.cognome = cognome;
 	}
 
-	public List<Libro> getListaLibriUtente() {
-		return listaLibriUtente;
-	}
-
-	public void setListaLibriUtente(List<Libro> listaLibriUtente) {
-		this.listaLibriUtente = listaLibriUtente;
-	}
+//	public List<Libro> getListaLibriUtente() {
+//		return listaLibriUtente;
+//	}
+//
+//	public void setListaLibriUtente(List<Libro> listaLibriUtente) {
+//		this.listaLibriUtente = listaLibriUtente;
+//	}
 		
 	public String getCodiceFiscale() {
 		return codiceFiscale;
@@ -91,16 +91,16 @@ public class Utente implements ValidaDati {
 	}
 	
 	//Metodo per la concatenazione per stampare la lista dei libri in prestito
-	public String toStringPrestito()
-	{
-		String str="\n";
-		for(Libro l: listaLibriUtente)
-		{
-			str=str + l.getAutore() + " " + l.getTitolo() + "\n"; 
-		}
-		
-		return str;
-	}
+//	public String toStringPrestito()
+//	{
+//		String str="\n";
+//		for(Libro l: listaLibriUtente)
+//		{
+//			str=str + l.getAutore() + " " + l.getTitolo() + "\n"; 
+//		}
+//		
+//		return str;
+//	}
 
 	@Override
 	public boolean isValid() {

@@ -17,7 +17,7 @@ public class Docente extends Utente implements ValidaDati {
 	}
 	
 	public Docente(String nome, String cognome, String codiceFiscale) {
-		super(nome,cognome);
+		super(nome,cognome,codiceFiscale);
 		this.codiceFiscale = codiceFiscale;
 	}
 

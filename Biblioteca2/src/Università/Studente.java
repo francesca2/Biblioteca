@@ -13,16 +13,18 @@ public class Studente extends Utente implements ValidaDati {
 
 	}
 	
-	public Studente(String nome, String cognome) {
-		super(nome,cognome);
+	public Studente(String nome, String cognome, String codiceFiscale) {
+		super(nome,cognome,codiceFiscale);
 		this.nome = nome;
 		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
 	}
 	
-	public Studente(String nome, String cognome, String matricola) {
-		super(nome,cognome);
+	public Studente(String nome, String cognome,String codiceFiscale, String matricola) {
+		super(nome,cognome,codiceFiscale);
 		this.nome = nome;
 		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
 		this.matricola = matricola;
 	}
 	

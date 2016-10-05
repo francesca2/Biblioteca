@@ -8,8 +8,8 @@ import java.util.TreeMap;
 public class Biblioteca {
 
 	private String nomeBiblioteca;
-	private List<Libro> listaLibri = new ArrayList<Libro>();
-	private List<Utente> listaUtenti = new ArrayList<Utente>();
+//	private List<Libro> listaLibri = new ArrayList<Libro>();
+//	private List<Utente> listaUtenti = new ArrayList<Utente>();
 	private List<Prestito> listaPrestiti = new ArrayList<Prestito>();
 	private Map<String,Utente> mappaUtenti = new TreeMap<String,Utente>();
 	private Map<String,Libro> mappaLibri = new TreeMap<String,Libro>();
@@ -33,21 +33,21 @@ public class Biblioteca {
 		this.nomeBiblioteca = nomeBiblioteca;
 	}
 
-	public List<Libro> getListaLibri() {
-		return listaLibri;
-	}
-
-	public void setListaLibri(List<Libro> listaLibri) {
-		this.listaLibri = listaLibri;
-	}
-
-	public List<Utente> getListaUtenti() {
-		return listaUtenti;
-	}
-
-	public void setListaUtenti(List<Utente> listaUtenti) {
-		this.listaUtenti = listaUtenti;
-	}
+//	public List<Libro> getListaLibri() {
+//		return listaLibri;
+//	}
+//
+//	public void setListaLibri(List<Libro> listaLibri) {
+//		this.listaLibri = listaLibri;
+//	}
+//
+//	public List<Utente> getListaUtenti() {
+//		return listaUtenti;
+//	}
+//
+//	public void setListaUtenti(List<Utente> listaUtenti) {
+//		this.listaUtenti = listaUtenti;
+//	}
 
 	public List<Prestito> getListaPrestiti() {
 		return listaPrestiti;
@@ -147,22 +147,22 @@ public class Biblioteca {
 	// Metodi di concatenazione per stampare la lista degli utenti assieme alla
 	// lista dei loro libri in prestito
 	// e per stampare la lista dei libri e la loro quantità disponibile
-	public String toStringUtenti() {
-		String str = "";
-		for (Utente u : listaUtenti) {
-			str = str + u.getNome() + " " + u.getCognome() + " "
-					+ u.toStringPrestito() + "\n";
-		}
-		return str;
-	}
-
-	public String toStringLibri() {
-		String str = "";
-		for (Libro l : listaLibri) {
-			str = str + l.getAutore() + " " + l.getTitolo() + " "
-					+ l.getCopieDisponibili() + "\n";
-		}
-		return str;
-	}
+//	public String toStringUtenti() {
+//		String str = "";
+//		for (Utente u : listaUtenti) {
+//			str = str + u.getNome() + " " + u.getCognome() + " "
+//					+ u.toStringPrestito() + "\n";
+//		}
+//		return str;
+//	}
+//
+//	public String toStringLibri() {
+//		String str = "";
+//		for (Libro l : listaLibri) {
+//			str = str + l.getAutore() + " " + l.getTitolo() + " "
+//					+ l.getCopieDisponibili() + "\n";
+//		}
+//		return str;
+//	}
 
 }
