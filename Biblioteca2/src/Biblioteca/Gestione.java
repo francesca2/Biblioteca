@@ -11,7 +11,7 @@ public class Gestione {
 	//già presente in biblioteca, se sì aggiorna le copie altrimenti lo inserisce nella lista
 	public Libro registraLibro(Biblioteca b, String autore, String titolo, String serialNumber, int copie)
 	{		
-		Libro l=b.trovaLibro(serialNumber);
+		Libro l=b.getMappaLibri().get(serialNumber);
 		
 		if(l==null)
 		{	
@@ -51,25 +51,44 @@ public class Gestione {
 	//che vi siano copie disponibili, che l'utente sia registrato alla Biblioteca, che non abbia già tre libri in prestito
 	// e che non abbia prestiti scaduti, se passa tutti questi controlli crea un nuovo prestito, lo aggiunge
 	//alla lista prestiti della biblioteca, alla lista prestiti dell'utente e aggiorna le copie disponibili altrimenti ritorna false
-	public boolean prestaLibro(Biblioteca b, String serialNumber, String codiceFiscale)
+	public boolean prestaLibro(Biblioteca b, String serialNumber, String codiceFiscale, Date dataOggi)
 	{
 		boolean result=true;
-		Libro l=b.trovaLibro(serialNumber);
-		Utente u=b.trovaUtente(codiceFiscale);
-		Prestito p=b.trovaPrestito(u);
-		Date dataOggi= new Date();
+		Libro l=b.getMappaLibri().get(serialNumber);
+		Utente u=b.getMappaUtente().get(codiceFiscale);
+//		Prestito p=b.trovaPrestito(u);
+//		Date dataOggi= new Date();
 	
 			if(b.getMappaLibri().containsKey(l.getSerialNumber()) && l.getCopieDisponibili()>0)
 			{
 				//L'idea è che essendo la lista ordinata, mi basta controllare il prestito più vecchio, 
 				//ovvero il primo che incontro quando faccio cercaPrestito. Se anche quello più recente
 				//fosse scaduto tanto non potrei comunque imprestare il libro.
-					if(b.getMappaUtente().containsKey(u.getCodiceFiscale()) && u.getLibriUtente().size()<3 && (dataOggi.getTime()-p.getDate().getTime())<=tempoLimite)
+					if(b.getMappaUtente().containsKey(u.getCodiceFiscale()) && u.getNumeroLibriInPrestito()<3)
 					{
-						u.aggiungiLibroUtente(l);
-						l.setCopieDisponibili(l.getCopieDisponibili() - 1);
-						Prestito pp=new Prestito(l,u,dataOggi);
-						b.aggiungiPrestito(pp);
+						if(!u.getLibriUtente().isEmpty())
+						{
+							Prestito p=b.trovaPrestito(u);
+							if((dataOggi.getTime()-p.getDate().getTime())<=tempoLimite)
+							{
+								u.aggiungiLibroUtente(l);
+								l.setCopieDisponibili(l.getCopieDisponibili() - 1);
+								Prestito pp=new Prestito(l,u,dataOggi);
+								b.aggiungiPrestito(pp);
+							}
+							else
+							{
+								return false;
+							}
+						}
+						else
+						{
+							u.aggiungiLibroUtente(l);
+							l.setCopieDisponibili(l.getCopieDisponibili() - 1);
+							Prestito pp=new Prestito(l,u,dataOggi);
+							b.aggiungiPrestito(pp);
+						}
+
 					}
 					else
 					{
@@ -88,8 +107,8 @@ public class Gestione {
 	//toglie il libro dalla lista prestiti e aggiorna il numero di copie disponibili di quel libro.
 	public boolean restituzioneLibro(Biblioteca b, String serialNumber, String codiceFiscale){
 		boolean result=true;
-		Libro l=b.trovaLibro(serialNumber);
-		Utente u=b.trovaUtente(codiceFiscale);
+		Libro l=b.getMappaLibri().get(serialNumber);
+		Utente u=b.getMappaUtente().get(codiceFiscale);
 
 			if(b.getListaLibri().contains(l))
 			{

@@ -17,12 +17,12 @@ public class MainBioblioteca {
 
 		System.out.println("Registrazione Libri:");
 
-		System.out.println("Copie totali: "+g.registraLibro(b, "tttt", "aaaa", "t123" ,1));
-		System.out.println("Copie totali: "+g.registraLibro(b, "tttt", "aaaa", "t123", 1));
-		System.out.println("Copie totali: "+g.registraLibro(b, "TTTT", "AAAA", "T123" , 1));
-		System.out.println("Copie totali: "+g.registraLibro(b, "TTTT", "AAAA", "T123", 1));
-		System.out.println("Copie totali: "+g.registraLibro(b, "NNNN", "aaaa", "N456" , 1));
-		System.out.println("Copie totali: "+g.registraLibro(b, "FFFF", "aaaa", "F456" , 1));
+		System.out.println("Copie totali: "+g.registraLibro(b, "tttt", "aaaa", "t123" ,1).getCopieTotali());
+		System.out.println("Copie totali: "+g.registraLibro(b, "tttt", "aaaa", "t123", 1).getCopieTotali());
+		System.out.println("Copie totali: "+g.registraLibro(b, "TTTT", "AAAA", "T123" , 1).getCopieTotali());
+		System.out.println("Copie totali: "+g.registraLibro(b, "TTTT", "AAAA", "T123", 1).getCopieTotali());
+		System.out.println("Copie totali: "+g.registraLibro(b, "NNNN", "aaaa", "N456" , 1).getCopieTotali());
+		System.out.println("Copie totali: "+g.registraLibro(b, "FFFF", "aaaa", "F456" , 1).getCopieTotali());
 
 		System.out.println("Registrazione Utenti:");
 
@@ -50,31 +50,45 @@ public class MainBioblioteca {
 		} catch (UtenteGi‡Esiste e) {
 			System.out.println(e.getMessage());
 		}
+		
+		GregorianCalendar gc= new GregorianCalendar();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String str1 = "10/01/2016";
+		try {
+			gc.setTime(sdf.parse(str1));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Date data1=gc.getTime();
+		
+		Date data2=new Date();
 
 		System.out.println("Prestito Libri: ");
 
-		if(g.prestaLibro(b, "t123", "MRIRSS46G547S")==true){
+		if(g.prestaLibro(b, "t123", "MRIRSS46G547S",data1)==true){
 		System.out.println("Libro prestato!");
 		}else{
 		System.out.println("Impossibile prestare!");}
-		if(g.prestaLibro(b, "T123", "MRIRSS46G547S")==true){
+		if(g.prestaLibro(b, "T123", "MRIRSS46G547S",data2)==true){
 		System.out.println("Libro prestato!");
 		}else{
 		System.out.println("Impossibile prestare!");}
 		
-		if(g.prestaLibro(b, "N456", "MRIRSS46G547S")==true){
+		if(g.prestaLibro(b, "N456", "MRIRSS46G547S",data2)==true){
 		System.out.println("Libro prestato!");
 		}else{
 		System.out.println("Impossibile prestare!");}
-		if(g.prestaLibro(b, "F456", "MRIRSS46G547S")==true){
+		if(g.prestaLibro(b, "F456", "MRIRSS46G547S",data2)==true){
 		System.out.println("Libro prestato!");
 		}else{
 		System.out.println("Impossibile prestare!");}
-		if(g.prestaLibro(b, "N456", "CHTVRD89P321T")==true){
+		if(g.prestaLibro(b, "N456", "CHTVRD89P321T",data2)==true){
 		System.out.println("Libro prestato!");
 		}else{
 		System.out.println("Impossibile prestare!");}
-		if(g.prestaLibro(b, "F456", "CHTVRD89P321T")==true){
+		if(g.prestaLibro(b, "F456", "CHTVRD89P321T",data2)==true){
 		System.out.println("Libro prestato!");
 		}else{
 		System.out.println("Impossibile prestare!");}

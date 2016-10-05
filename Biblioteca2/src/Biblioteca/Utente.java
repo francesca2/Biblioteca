@@ -12,6 +12,7 @@ public class Utente implements ValidaDati {
 	protected String codiceFiscale;
 	private List<Libro> listaLibriUtente =new ArrayList<Libro>();
 	private Map<String,Libro> libriUtente = new TreeMap<String,Libro>();
+	private int numeroLibriInPrestito;
 	
 	//Costruttore
 	public Utente() {
@@ -63,12 +64,21 @@ public class Utente implements ValidaDati {
 	public void setLibriUtente(Map<String, Libro> libriUtente) {
 		this.libriUtente = libriUtente;
 	}
+	
+	public int getNumeroLibriInPrestito() {
+		return numeroLibriInPrestito;
+	}
+
+	public void setNumeroLibriInPrestito(int numeroLibriInPrestito) {
+		this.numeroLibriInPrestito = numeroLibriInPrestito;
+	}
 
 	//Metodo per aggiungere un libro ai prestiti di quell'utente
 	public void aggiungiLibroUtente(Libro l)
 	{
 		//listaLibriUtente.add(l);
 		libriUtente.put(l.getSerialNumber(), l);
+		this.setNumeroLibriInPrestito(this.getNumeroLibriInPrestito()+1);
 	}
 	
 	//Metodo per togliere il libro restituito alla lista prestiti
@@ -76,6 +86,8 @@ public class Utente implements ValidaDati {
 	{
 //		listaLibriUtente.remove(l);
 		libriUtente.remove(l.getSerialNumber());
+		this.setNumeroLibriInPrestito(this.getNumeroLibriInPrestito()-1);
+		
 	}
 	
 	//Metodo per la concatenazione per stampare la lista dei libri in prestito

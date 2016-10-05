@@ -104,18 +104,6 @@ public class Biblioteca {
 //
 //		return ll;
 //	}
-	public Libro trovaLibro(String serialNumber) {
-		Libro l;
-		if(mappaLibri.containsKey(serialNumber))
-		{
-			l= mappaLibri.get(serialNumber);
-		}
-		else
-		{
-			l=null;
-		}
-		return l;
-	}
 	
 
 	// Metodo per vedere se un utente è iscritto alla biblioteca ed avere un
@@ -134,19 +122,6 @@ public class Biblioteca {
 //
 //		return v;
 //	}
-	public Utente trovaUtente(String codiceFiscale) {
-		Utente u;
-		if(mappaLibri.containsKey(codiceFiscale))
-		{
-			u= mappaUtenti.get(codiceFiscale);
-		}
-		else
-		{
-			u=null;
-		}
-		return u;
-	}
-	
 	
 	//Metodo per trovare un prestito
 	
